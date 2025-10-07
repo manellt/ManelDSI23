@@ -1,0 +1,25 @@
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FaceSnap } from '../models/face-snap.model';
+
+@Component({
+  selector: 'app-face-snap',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './face-snap-g1.component.html',
+  styleUrls: ['./face-snap-g1.component.scss']
+})
+export class FaceSnapComponent {
+  @Input() faceSnap!: FaceSnap;
+  buttonText: string = 'Oh Snap!';
+
+  onSnap() {
+    if (this.buttonText === 'Oh Snap!') {
+      this.faceSnap.snaps++;
+      this.buttonText = 'Oops, unSnap!';
+    } else {
+      this.faceSnap.snaps--;
+      this.buttonText = 'Oh Snap!';
+    }
+  }
+}
