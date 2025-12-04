@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import Material Theme */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* Global Styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8, #6a4190);
+}
+
+/* Material overrides for better design */
+.mat-mdc-card {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.mat-mdc-button {
+  border-radius: 25px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.mat-mdc-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mat-mdc-raised-button {
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+.mat-mdc-raised-button:hover {
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Form field styling */
+.mat-mdc-form-field {
+  margin-bottom: 16px;
+}
+
+.mat-mdc-form-field-outline {
+  border-radius: 12px !important;
+}
+
+/* Progress bar styling */
+.mat-mdc-progress-bar {
+  border-radius: 10px !important;
+  height: 8px !important;
+}
+
+/* Slider styling */
+.mat-mdc-slider {
+  --mdc-slider-handle-color: #667eea;
+  --mdc-slider-active-track-color: #667eea;
+  --mdc-slider-inactive-track-color: rgba(102, 126, 234, 0.3);
+}
+

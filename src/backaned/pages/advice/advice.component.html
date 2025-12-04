@@ -1,0 +1,92 @@
+<div class="advice-container">
+  <mat-card class="advice-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon></mat-icon>
+        Conseils Personnalisés
+      </mat-card-title>
+      <mat-card-subtitle>
+        Basé sur votre niveau de stress {{ stressCategory.toLowerCase() }} ({{ stressLevel }}%)
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="stress-indicator">
+        <mat-icon [class]="stressLevel < 30 ? 'low-stress' : stressLevel < 60 ? 'medium-stress' : 'high-stress'">
+          {{ stressLevel < 30 ? 'sentiment_satisfied' : stressLevel < 60 ? 'sentiment_neutral' : 'sentiment_dissatisfied' }}
+        </mat-icon>
+        <h3>Niveau de stress: {{ stressCategory }}</h3>
+      </div>
+
+      <div class="advice-section">
+        <h4><mat-icon></mat-icon> Recommandations principales</h4>
+        <mat-list>
+          <mat-list-item *ngFor="let advice of adviceList">
+            <mat-icon matListIcon></mat-icon>
+            <div matListItemTitle>{{ advice }}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div class="personalized-advice-section">
+        <h4><mat-icon></mat-icon> Conseils personnalisés selon vos réponses</h4>
+
+        <div class="individual-advice">
+          <div class="advice-item" *ngIf="moodAdvice">
+            <mat-icon></mat-icon>
+            <div class="advice-content">
+              <strong>Humeur :</strong> {{ moodAdvice }}
+            </div>
+          </div>
+
+          <div class="advice-item" *ngIf="sleepAdvice">
+            <mat-icon></mat-icon>
+            <div class="advice-content">
+              <strong>Sommeil :</strong> {{ sleepAdvice }}
+            </div>
+          </div>
+
+          <div class="advice-item" *ngIf="activityAdvice">
+            <mat-icon></mat-icon>
+            <div class="advice-content">
+              <strong>Activité physique :</strong> {{ activityAdvice }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips-section">
+        <h4><mat-icon></mat-icon> Conseils pratiques supplémentaires</h4>
+        <mat-list>
+          <mat-list-item *ngFor="let tip of tips">
+            <mat-icon matListIcon></mat-icon>
+            <div matListItemTitle>{{ tip }}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div class="motivation-section" *ngIf="stressLevel >= 60">
+        <mat-icon></mat-icon>
+        <p><strong>Important:</strong> Un niveau de stress élevé peut affecter votre santé.
+           N'hésitez pas à consulter un professionnel de santé pour un accompagnement personnalisé.</p>
+      </div>
+
+      <div class="motivation-section" *ngIf="stressLevel < 60">
+        <mat-icon></mat-icon>
+        <p>Chaque petit pas compte pour améliorer votre bien-être.
+           Vous êtes sur la bonne voie !</p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="retakeTest()">
+        <mat-icon></mat-icon>
+        Refaire le test
+      </button>
+      <button mat-button (click)="goToProfile()">
+        <mat-icon></mat-icon>
+        Voir mon profil
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

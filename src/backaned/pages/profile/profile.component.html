@@ -1,0 +1,50 @@
+<div class="profile-container">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon></mat-icon>
+        Profile & Insights
+      </mat-card-title>
+      <mat-card-subtitle>Vos résultats d'analyse de stress</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="stress-section" *ngIf="stressLevel > 0">
+        <div class="stress-header">
+          <h3>Niveau de Stress Actuel</h3>
+          <div class="stress-value">{{ stressLevel }}/100</div>
+        </div>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="stressLevel"
+          [color]="stressLevel < 30 ? 'primary' : stressLevel < 60 ? 'accent' : 'warn'">
+        </mat-progress-bar>
+        <div class="stress-labels">
+          <span>Faible</span>
+          <span>Modéré</span>
+          <span>Élevé</span>
+        </div>
+      </div>
+
+      <div class="advice-section" *ngIf="advice">
+        <h4><mat-icon></mat-icon> Conseils Personnalisés</h4>
+        <p>{{ advice }}</p>
+      </div>
+
+      <div class="timestamp" *ngIf="timestamp">
+        <mat-icon></mat-icon>
+        Dernière analyse: {{ timestamp | date:'dd/MM/yyyy à HH:mm' }}
+      </div>
+
+      <div class="no-data" *ngIf="stressLevel === 0">
+        <mat-icon>
+        </mat-icon>
+        <p>Aucune analyse de stress trouvée. Effectuez un test pour voir vos résultats ici.</p>
+        <button mat-raised-button color="primary" routerLink="/stress-check">
+          <mat-icon></mat-icon>
+          Analyser mon stress
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
